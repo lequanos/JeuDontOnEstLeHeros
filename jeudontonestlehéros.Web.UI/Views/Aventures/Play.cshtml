@@ -1,0 +1,41 @@
+﻿@model jeudontonestlehero.Core.Data.Models.Paragraphe
+
+@{
+    ViewData["Title"] = "C'est Parti";
+}
+
+<h1>@Model.Title</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Model.Description
+        </dt>
+    </dl>
+    @if (Model.MaQuestion != null)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Model.MaQuestion.Title
+            </dt>
+            @if (Model.MaQuestion.MyAnswers != null && Model.MaQuestion.MyAnswers.Count > 0)
+            {
+                <ul class="col-sm-2">
+                    @foreach (var proposition in Model.MaQuestion.MyAnswers)
+                    {
+                        <li>
+                            <a asp-controller="Aventures" asp-action="Play" asp-route-id="@proposition.ParagrapheId">
+                                @proposition.Proposition
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+        </dl>
+    }
+
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

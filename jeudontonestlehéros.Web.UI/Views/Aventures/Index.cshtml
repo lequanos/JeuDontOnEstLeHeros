@@ -1,0 +1,33 @@
+﻿@using jeudontonestlehero.Core.Data.Models;
+@model List<Aventures>
+
+@{
+    ViewData["Title"] = "Aventures Page";
+}
+
+
+<h1 class="text-center">
+    @ViewBag.monTitre
+</h1>
+
+<div class="row justify-content-center" style="margin: 0 auto;">
+    <a href="/creer-mon-aventure" class="btn btn-primary">Nouvelle aventure</a>
+</div>
+
+<h2 class="text-center small">
+    Vos dernières aventures
+</h2>
+
+<div class="row">
+    @foreach (Aventures aventure in Model)
+    {
+        <a href="/jouer-aventure" class="card border m-2 text-center" style="width: 15rem;">
+            <div class="card-body">
+                @aventure.Title
+            </div>
+        </a>
+    }
+</div>
+
+
+
